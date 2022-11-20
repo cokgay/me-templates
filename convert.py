@@ -12,7 +12,10 @@ for file in os.listdir(input_dir):
     with open(f"./{input_dir}/{file}", "r") as f:
         content = f.read()
 
-    new_content = content.replace("{", "{{").replace("}", "}}").replace("{{0}}", "{0}").replace("{{1}}", "{1}").replace("{{2}}", "{2}").replace("{{3}}", "{3}").replace("\n", "")
+    new_content = content.replace("{", "{{").replace("}", "}}").replace("{{0}}", "{0}").replace("{{1}}", "{1}").replace("{{2}}", "{2}").replace("{{3}}", "{3}").splitlines()
+
+    for (index, item) in enumerate(new_content):
+        new_content[index] = item.strip()
 
     with open(f"./{output_dir}/{file.replace('.html', '.temp')}", "w") as f:
-        f.write(new_content)
+        f.write("".join(new_content))
