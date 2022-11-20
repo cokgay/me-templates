@@ -125,7 +125,7 @@
 
             let { username, discriminator, avatar } = returned.data.discord_user;
 
-            avatarElement.style.display = "inline"
+            avatarElement.style.display = "inline";
             avatarElement.src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`;
             avatarElement.style.borderColor = styles[returned.data.discord_status];
         };
