@@ -321,9 +321,8 @@
 <body>
     <div id="box">
         <div id="upper">
-            <img src="https://cdn.discordapp.com/avatars/1013270483560579165/7218827e0ee9454f646aa7680c92acc2.png"
-                alt="avatar" id="avatar">
-            <a id="username" href="https://">username#0000</a>
+            <img src="" alt="avatar" id="avatar">
+            <a id="username" href="">username#0000</a>
         </div>
         <div id="flex">
             <div id="left">
@@ -336,45 +335,45 @@
         </div>
         <div id="bottom">
             <a target="_blank" href="https://www.artstation.com/artwork/6brOdx" id="bottom">
-                Background Source
+                Background&nbsp;Source
             </a>
             &nbsp;/&nbsp;
             <a target="_blank" href="/edit" id="bottom">
-                Edit Your Profile
+                Edit&nbsp;Your&nbsp;Profile
             </a>
         </div>
     </div>
     <script>
-        let usernameElement = document.getElementById("username")
-        let avatarElement = document.getElementById("avatar")
-        let infoElement = document.getElementById("upper")
+        let usernameElement = document.getElementById("username");
+        let avatarElement = document.getElementById("avatar");
+        let infoElement = document.getElementById("upper");
 
-        const api = "https://api.lanyard.rest/v1/users"
-        const id = "{3}"
+        const api = "https://api.lanyard.rest/v1/users";
+        const id = "{3}";
 
         const styles = {
             online: "#36be1b",
             offline: "#cccccc",
             idle: "#ffbd2f",
             dnd: "#ff3640"
-        }
+        };
 
         const initialize = async () => {
-            let result = await fetch(`${api}/${id}`)
-            let returned = await result.json()
+            let result = await fetch(`${api}/${id}`);
+            let returned = await result.json();
 
-            let { username, discriminator, avatar } = returned.data.discord_user
+            let { username, discriminator, avatar } = returned.data.discord_user;
 
-            avatarElement.src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`
+            avatarElement.src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`;
 
-            infoElement.style.borderColor = styles[returned.data.discord_status]
-            infoElement.style.display = "flex"
+            infoElement.style.borderColor = styles[returned.data.discord_status];
+            infoElement.style.display = "flex";
 
-            usernameElement.innerText = `${username}#${discriminator}`
-            usernameElement.href = `https://discord.com/users/${id}`
-        }
+            usernameElement.innerText = `${username}#${discriminator}`;
+            usernameElement.href = `https://discord.com/users/${id}`;
+        };
 
-        initialize()
+        initialize();
     </script>
 </body>
 
