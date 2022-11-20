@@ -236,6 +236,36 @@
             background: #EA4C89;
             color: #fff;
         }
+
+        #bottom {
+            margin-top: 10px;
+            display: block;
+            background: #000;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            padding: 5px;
+            color: #fff;
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #000 #09ff84;
+        }
+
+        *::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: #09ff84;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background-color: #000;
+            border-radius: 0px;
+            border: 2px solid #09ff84;
+        }
     </style>
 </head>
 
@@ -255,6 +285,9 @@
                 {2}
             </div>
         </div>
+        <a target="_blank" href="https://www.artstation.com/artwork/6brOdx" id="bottom">
+            Background Source
+        </a>
     </div>
     <script>
         let usernameElement = document.getElementById("username")
