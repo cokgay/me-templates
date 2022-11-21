@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@{0}</title>
+    <title>{{ username }}</title>
     <meta content="website" property="og:type" />
-    <meta content="{0}" property="og:title" />
-    <meta content="{1}" property="og:description" />
-    <meta content="{0}" property="og:site_name" />
-    <meta name="description" content="{1}" />
+    <meta content="{{ username }}" property="og:title" />
+    <meta content="{{ about }}" property="og:description" />
+    <meta content="{{ username }}" property="og:site_name" />
+    <meta name="description" content="{{ about }}" />
     <meta name="robots" content="index, follow" />
-    <meta name="title" content="{0}" />
+    <meta name="title" content="{{ username }}" />
     <meta name="author" content="https://me.cok.gay/" />
     <link rel="shortcut icon" href="https://raw.githubusercontent.com/cokdotgay/icons/main/webp/cokdotgay-nobg.webp"
         type="image/x-icon">
@@ -42,7 +42,7 @@
             width: 50%;
         }
 
-        #box img {
+        #box #avatar {
             width: 128px;
             height: 128px;
             border-radius: 100%;
@@ -65,13 +65,11 @@
         }
 
         #box #flex a {
-            font-size: 0px;
             margin: 5px;
-            transition: 250ms;
         }
 
-        #box #flex a svg {
-            fill: #fff;
+        #box #flex a img {
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(43deg) brightness(102%) contrast(101%);
             width: 32px;
             height: 32px;
         }
@@ -100,17 +98,21 @@
 <body>
     <div id="box">
         <img id="avatar" src="" alt="avatar">
-        <h1>{0}</h1>
-        <p>{1}</p>
+        <h1>{{ username }}</h1>
+        <p>{{ about }}</p>
         <div id="flex">
-            {2}
+            {% for link in links %}
+            <a href="{{ link.url }}" class="{{ link.display }}">
+                <img src="/static/icons/{{ link.display|lower }}.svg" alt="{{ link.title }}">
+            </a>
+            {% endfor %}
         </div>
     </div>
     <script>
         let avatarElement = document.getElementById("avatar");
 
         const api = "https://api.lanyard.rest/v1/users";
-        const id = "{3}";
+        const id = "{{ lanyard_id }}";
 
         const styles = {
             online: "#00ff00",
